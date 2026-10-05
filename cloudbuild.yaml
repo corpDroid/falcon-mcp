@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [
     'build',
-    '-t', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/falcon-mcp/${_SERVICE_NAME}:${COMMIT_SHA}',
+    '-t', 'asia-south1-docker.pkg.dev/${PROJECT_ID}/falcon-mcp/falcon-mcp-server:${SHORT_SHA}',
     '--file', 'Dockerfile',
     '.'
   ]
@@ -10,10 +10,10 @@ steps:
   - 'DOCKER_BUILDKIT=1'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/falcon-mcp/${_SERVICE_NAME}:${COMMIT_SHA}']
+  args: ['push', 'asia-south1-docker.pkg.dev/${PROJECT_ID}/falcon-mcp/falcon-mcp-server:${SHORT_SHA}']
 
 options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
-- '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/falcon-mcp/${_SERVICE_NAME}:${COMMIT_SHA}'
+- 'asia-south1-docker.pkg.dev/${PROJECT_ID}/falcon-mcp/falcon-mcp-server:${SHORT_SHA}'
