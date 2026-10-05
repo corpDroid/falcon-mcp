@@ -12,5 +12,8 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/falcon-mcp/${_SERVICE_NAME}:${COMMIT_SHA}']
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
 - '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/falcon-mcp/${_SERVICE_NAME}:${COMMIT_SHA}'
